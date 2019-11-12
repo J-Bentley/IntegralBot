@@ -12,6 +12,7 @@ A Discord bot running on a raspberrypi 3 that pulls data from free API's that co
 * Owstats: Shows overwatch stats for given battletag usage: ?owstats username-1234 (replace # with -, in the battletag)
 * alert: Turns on specific pins set in pins dictionary that are hooke dup to a buzzer and red LED.
 * blip: Flashes random GPIO pins (LED/buzzer) for random amounts of time.
+* rainbow: Flahses a rainbow for given amount of times
 # TODO
 * tee STDOUT to console & text file
 * arg error handling
