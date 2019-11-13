@@ -7,14 +7,15 @@ A Discord bot running on a raspberrypi 3 that pulls data from free API's that co
 * Free API key & account for weather with [pyOWM](https://github.com/csparpa/pyowm). [Location lookup tool](https://openweathermap.org/).  
 # Commands
 * Weather: Shows wind, rain, snow, temperature, humidity data and weather status of set location.
-* Sun: Shows approx sunSET of today and predicts tomorrows sunRISE based of off "todays'".
+* Sun: Shows approx sunSET of today and predicts tomorrows sunRISE based of off that day's.
 * Owstats: Shows overwatch stats for given battletag usage: ?owstats username-1234 (replace # with -, in the battletag)
-* alert: Turns on specific pins set in pins dictionary that are hooke dup to a buzzer and red LED.
-* blip: Flashes random GPIO pins (LED/buzzer) for random amounts of time.
+* alert: Turns on specific pins that are hooked up to a buzzer and red LED.
+* blip: Flashes random GPIO pins (LED/buzzer) with random intervals.
 * rainbow: Flahses a rainbow for given amount of times
+* morsepi: converts arguments into 
+
 # TODO
 * tee STDOUT to console & text file
 * arg error handling
 * program exit error handling (raw input?)
-* Morsepi command
 * fix owstats ?
