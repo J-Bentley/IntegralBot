@@ -12,7 +12,7 @@ A Discord bot running on a raspberrypi 3 that pulls data from free API's that co
 * alert: Turns on specific pins that are hooked up to a buzzer and red LED.
 * blip: Flashes random GPIO pins (LED/buzzer) with random intervals.
 * rainbow: Flahses a rainbow for given amount of times
-* morsepi: converts arguments into 
+* morsepi: converts sentence given to morse and flashes specific pins on server RPi. [Timings via](https://morsecode.scphillips.com/timing.html)
 
 # TODO
 * tee STDOUT to console & text file
