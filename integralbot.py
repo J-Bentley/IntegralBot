@@ -136,11 +136,7 @@ async def rainbow(ctx, arg):
             await ctx.send(str(n)+" rainbows")
     else:
         await ctx.send("Usage: ?rainbow <number>")
-#
-# CONSTRUCTION ZONE, ENTER AT OWN RISK!!
-#
-# pls drive slow and mind the workers
-#
+        
 @bot.command(pass_context=True)
 async def morsepi(ctx, *, arg):
     print('morsepi ('+arg+') by:')
