@@ -1,7 +1,7 @@
 # IntegralBot
 A Discord bot running on a raspberrypi 3 that pulls data from free API's that convenient to Drone pilots and gamers, as well as provides user output to the server via Discord commands to GPIO pins hooked up to LED's & a buzzer.
 # Setup
-* [Discord.py](https://github.com/Rapptz/discord.py)
+* [Discord.py](https://github.com/Rapptz/discord.py), [Discord botsetup TL;DR](https://www.reddit.com/r/discordapp/comments/5tl7xd/how_to_make_a_discord_bot_tldr_edition/)
 * [Basic RPi LED wiring example](https://imgur.com/a/dwl7CFP)
 * Ensure pin channels are set on line 32; [RPi3 GPIO broadcomm layout reference](https://imgur.com/a/7G1IacE)
 * Free API key & account for weather with [pyOWM](https://github.com/csparpa/pyowm). [Location lookup tool](https://openweathermap.org/).  
