@@ -14,8 +14,8 @@ import socket
 
 hostname = socket.gethostname()
 
-weather_location = 'zzz'
-owm = pyowm.OWM('xxx')
+weather_location = 'xxx'
+owm = pyowm.OWM('yyy')
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='?')
@@ -136,7 +136,48 @@ async def rainbow(ctx, arg):
             await ctx.send(str(n)+" rainbows")
     else:
         await ctx.send("Usage: ?rainbow <number>")
+#
+# CONSTRUCTION ZONE, ENTER AT OWN RISK!!
+#
+# pls drive slow and mind the workers
+#
+@bot.command(pass_context=True)
+async def morsepi(ctx, *, arg):
+    print('morsepi ('+arg+') by:')
+    print(ctx.message.author)
 
+    ref = {' ': ' ', "'": '.----.', '(': '-.--.-', ')': '-.--.-', ',': '--..--', '-': '-....-', '.': '.-.-.-', '/': '-..-.', 
+        '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...', 
+        '8': '---..', '9': '----.', ':': '---...', ';': '-.-.-.', '?': '..--..', 'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 
+        'E': '.', 'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 
+        'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 
+        'Y': '-.--', 'Z': '--..', '_': '..--.-'}
+
+    for char in arg:
+        for symbol in ref[char.upper()]:
+            if symbol == ".":
+                await ctx.send(" .")
+                GPIO.output(pins["buzzer"],GPIO.HIGH)
+                GPIO.output(pins["red"],GPIO.HIGH)
+                time.sleep(0.2)
+
+                GPIO.output(pins["buzzer"],GPIO.LOW)
+                GPIO.output(pins["red"],GPIO.LOW)
+                time.sleep(0.2)
+
+            elif symbol == "-":
+                await ctx.send(" -")
+                GPIO.output(pins["buzzer"],GPIO.HIGH)
+                GPIO.output(pins["red"],GPIO.HIGH)
+                time.sleep(0.6)
+
+                GPIO.output(pins["buzzer"],GPIO.LOW)
+                GPIO.output(pins["red"],GPIO.LOW)
+                time.sleep(0.6)
+
+            else:
+                time.sleep(0.5)
+    await ctx.send(arg+" sent to "+hostname+" via morse code.")
 @bot.command(pass_context=True)
 async def alert(ctx):
     print('alert by:')
@@ -191,4 +232,4 @@ async def owstats(ctx, arg):
     message = ("Name: "+ statsname+"\n"+"Level: "+statslevel+"\n"+"Prestige: "+statsprestige+"\n"+"Games played: "+statsgames+"\n"+"Games won: "+statswon+"\n"+"Cards: "+statscard)
     await ctx.send(message)
 
-bot.run("yyy")
+bot.run("zzz")
