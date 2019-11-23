@@ -205,7 +205,7 @@ async def owstats(ctx, arg):
     try:
         stats = requests.get('https://ow-api.com/v1/stats/pc/us/'+arg+'/profile').text.replace(":"," ")
     except:
-        await ctx.send("Error grabbing battletag!")
+        await ctx.send("Error communicating with Overwatch stats API!")
 
     nameindex = stats.find("name")
     statsname = stats[nameindex+6 : nameindex+22]
