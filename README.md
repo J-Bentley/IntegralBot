@@ -3,7 +3,7 @@ A Discord bot running on a raspberrypi 3 that pulls data from free API's that co
 # Setup
 * [Discord.py](https://github.com/Rapptz/discord.py) & [Discord bot setup TL;DR](https://www.reddit.com/r/discordapp/comments/5tl7xd/how_to_make_a_discord_bot_tldr_edition/)
 * [Basic RPi LED wiring example](https://imgur.com/a/dwl7CFP)
-* Ensure pin channels are set on line 32; [RPi3 GPIO broadcomm layout reference](https://imgur.com/a/7G1IacE)
+* Ensure pin channels are set on line 32 of this script; [RPi3 GPIO broadcomm layout reference](https://imgur.com/a/7G1IacE)
 * Free API key & account for weather with [pyOWM](https://github.com/csparpa/pyowm). [Location lookup tool](https://openweathermap.org/).  
 # Commands
 * Weather: Shows wind, rain, snow, temperature, humidity data and weather status of set location.
