@@ -1,5 +1,5 @@
 # IntegralBot
-A Discord bot running on a raspberrypi 3 that pulls data from free API's that is convenient to Drone pilots and gamers, as well as provides Discord user output to the server via chat channel commands to turn on and off GPIO pins hooked up to LED's & a buzzer on the RPi.
+A Discord bot running on a raspberrypi 3 that pulls data from free API's that is convenient to Drone pilots and gamers, also provides Discord commands to make LED's flash on a Raspberry Pi server.
 # Setup
 * [Discord.py](https://github.com/Rapptz/discord.py) & [Discord bot setup TL;DR](https://www.reddit.com/r/discordapp/comments/5tl7xd/how_to_make_a_discord_bot_tldr_edition/)
 * [Basic RPi LED wiring example](https://imgur.com/a/dwl7CFP)
