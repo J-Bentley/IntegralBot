@@ -3,7 +3,6 @@ import time
 import aiohttp
 import asyncio
 import discord
-import pyowm
 import requests
 import random
 from random import choice
@@ -13,9 +12,6 @@ import RPi.GPIO as GPIO
 import socket
 
 hostname = socket.gethostname()
-
-weather_location = 'xxx'
-owm = pyowm.OWM('yyy')
 
 client = discord.Client()
 bot = commands.Bot(command_prefix='?')
@@ -39,47 +35,7 @@ async def on_ready():
     print('Logged in as')
     print(bot.user.name)
     print(bot.user.id)
-    print('---- Ready! ----')
-
-@bot.command(pass_context=True)
-async def weather(ctx):
-    print('weather by:')
-    print(ctx.message.author)
-
-    observation = owm.weather_at_place(weather_location)
-    w = observation.get_weather()
-
-    weather_icon = w.get_weather_icon_url() 
-    wind = w.get_wind()
-    humidity = w.get_humidity()  
-    temp = w.get_temperature('celsius')
-    status = w.get_detailed_status()
-    rain = w.get_rain()
-    snow = w.get_snow()
-
-    async with aiohttp.ClientSession() as session:
-        async with session.get(weather_icon) as resp:
-            if resp.status != 200:
-                return await ctx.send('Error grabbing icon!')
-                exit(1)
-            data = io.BytesIO(await resp.read())
-
-    weather_output = "Here's todays weather in {}!\nRain: {}\nSnow: {}\nWind: {}\nHumidity: {}\nTemp: {}\nStatus: {}\n".format(weather_location, rain, snow, wind, humidity, temp, status)
-    await ctx.send(weather_output,file=discord.File(data, 'weather_image.png'))
-
-@bot.command(pass_context=True)
-async def sun(ctx):
-    print('sunset by:')
-    print(ctx.message.author)
-
-    observation = owm.weather_at_place(weather_location)
-    w = observation.get_weather()
-
-    sunset_time = w.get_sunset_time('iso')
-    sunrise_time = w.get_sunrise_time('iso')
-
-    sunset_output = "The sun sets upon {} at {} and rises tomorrow around {}.".format(weather_location, sunset_time, sunrise_time)
-    await ctx.send(sunset_output)
+    print(' --- Ready! --- ')
 
 @bot.command(pass_context=True)
 async def blip(ctx, arg):
@@ -95,7 +51,6 @@ async def blip(ctx, arg):
         time.sleep(random_time)
         GPIO.output(random_pin,GPIO.LOW)
         time.sleep(0.2)
-        #await ctx.send("Pin "+str(random_pin)+" blip'd for "+str(random_time))
     
     await ctx.send("Okay, I blip'ed "+hostname+" LED's "+str(arg)+" times!")
 
@@ -193,39 +148,5 @@ async def alert(ctx):
     GPIO.output(pins["red"],GPIO.LOW)
     
     await ctx.send("Alerted "+hostname+"!")
-
-@bot.command(pass_context=True)
-async def owstats(ctx, arg):
-    print('owstats by:')
-    print(ctx.message.author)
-
-    if "#" in arg:
-    	await ctx.send("Thats a spooky symbol, replace it with this -")
-
-    try:
-        stats = requests.get('https://ow-api.com/v1/stats/pc/us/'+arg+'/profile').text.replace(":"," ")
-    except:
-        await ctx.send("Error communicating with Overwatch stats API!")
-
-    nameindex = stats.find("name")
-    statsname = stats[nameindex+6 : nameindex+22]
-
-    levelindex = stats.find("level")
-    statslevel = stats[levelindex+7 : levelindex+9]
-
-    prestigeindex = stats.find("prestige")
-    statsprestige = stats[prestigeindex+10 : prestigeindex+11]
-
-    gamesindex = stats.find("played")
-    statsgames = stats[gamesindex+8 : gamesindex+11]
-
-    wonindex = stats.find("won")
-    statswon = stats[wonindex+5 : wonindex+9]
-
-    cardindex = stats.find("cards")
-    statscard = stats[cardindex+6 : cardindex+9]
-
-    message = ("Name: "+ statsname+"\n"+"Level: "+statslevel+"\n"+"Prestige: "+statsprestige+"\n"+"Games played: "+statsgames+"\n"+"Games won: "+statswon+"\n"+"Cards: "+statscard)
-    await ctx.send(message)
 
 bot.run("zzz")
