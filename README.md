@@ -7,7 +7,7 @@ Discord bot running on raspberry pi that converts text to morse code via led/buz
 * Ensure pin channels are set on line 32; [GPIO broadcomm reference](https://imgur.com/a/7G1IacE)
 
 # Commands
-* morsepi: converts sentence given to morse code and flashes specific pins on server RPi. [Source for timings](https://morsecode.world/international/timing.html)
+* morsepi: converts sentence given to morse code and flashes specific pins on server RPi. [Source.](https://morsecode.world/international/timing.html)
 * alert: Turns on specific pins that are hooked up to a buzzer and red LED.
 * blip: Flashes random GPIO pins with random intervals.
 * rainbow: Flashes a rainbow for given amount of times
